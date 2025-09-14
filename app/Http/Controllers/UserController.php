@@ -44,4 +44,28 @@ class UserController extends Controller
 
         return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
     }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        // Validamos los datos, pero permitimos que el email sea el mismo si no cambia
+        $request->validate([
+            'rut' => 'required|unique:users,rut,' . $user->id,
+            'nombre' => 'required|string',
+            'apellido' => 'required|string',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+        ]);
+
+        // Actualizamos el usuario
+        $user->update($request->all());
+
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
+    }
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+    }
 }
