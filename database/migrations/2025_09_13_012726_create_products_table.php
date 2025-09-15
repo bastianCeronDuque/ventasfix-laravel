@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->string('nombre'); // El nombre del producto [cite: 1]
             $table->text('descripcion_corta'); // La descripción corta [cite: 1]
             $table->text('descripcion_larga'); // La descripción larga [cite: 1]
-            $table->string('imagen_del_producto'); // La URL de la imagen [cite: 1]
+            $table->string('imagen_url'); // La URL de la imagen [cite: 1]
             $table->decimal('precio_neto', 8, 2); // El precio neto [cite: 1]
-            $table->decimal('precio_de_venta', 8, 2); // El precio de venta [cite: 1]
+            // precio_venta se calcula en el modelo como un atributo accesssor
             $table->integer('stock_actual'); // El stock actual [cite: 1]
             $table->integer('stock_minimo'); // El stock mínimo [cite: 1]
             $table->integer('stock_bajo'); // El stock bajo [cite: 1]

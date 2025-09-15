@@ -29,9 +29,8 @@ class ProductController extends Controller
             'nombre' => 'required',
             'descripcion_corta' => 'required',
             'descripcion_larga' => 'required',
-            'imagen_del_producto' => 'required|url', // Asume una URL de imagen
+            'imagen_url' => 'required|url', // URL de la imagen
             'precio_neto' => 'required|numeric',
-            'precio_de_venta' => 'required|numeric',
             'stock_actual' => 'required|integer',
             'stock_minimo' => 'required|integer',
             'stock_bajo' => 'required|integer',
