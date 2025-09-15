@@ -27,9 +27,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/clientes', [ClientController::class, 'index'])->name('clients.index');
     // ... Aquí puedes agregar las rutas para el CRUD de clientes
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
