@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,10 +13,7 @@ Route::get('/', function () {
 // Rutas protegidas por autenticación
 Route::middleware(['auth'])->group(function () {
     // Rutas del Dashboard
-    Route::get('/dashboard', function () {
-        // En una etapa posterior, pasaremos datos a esta vista
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Rutas del Mantenedor de Usuarios
     Route::get('/usuarios', [UserController::class, 'index'])->name('users.index');
