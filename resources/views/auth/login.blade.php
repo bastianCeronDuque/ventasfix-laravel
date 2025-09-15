@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Login Cover - Pages | Vuexy - Bootstrap Admin Template</title>
+    <title>Login Ventasfix</title>
 
     <meta name="description" content="" />
 
@@ -93,11 +93,11 @@
                       fill="#7367F0" />
                   </svg>
                 </span>
-                <span class="app-brand-text demo text-body fw-bold">Vuexy</span>
+                <span class="app-brand-text demo text-body fw-bold">Ventasfix</span>
               </a>
             </div>
-            <h4 class="mb-1 pt-2">¡Bienvenido a Vuexy! 👋</h4>
-            <p class="mb-4">Por favor, inicia sesión en tu cuenta y comienza la aventura</p>
+            <h4 class="mb-1 pt-2">¡Bienvenido a Ventasfix! 👋</h4>
+            <p class="mb-4">Por favor, inicia sesión en tu cuenta</p>
 
             <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
                 @csrf

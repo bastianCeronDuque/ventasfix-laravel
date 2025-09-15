@@ -12,7 +12,7 @@ class UserController extends Controller
         $users = User::all();
 
         // Retornamos la vista y pasamos los usuarios a la vista
-        return view('usuarios', compact('users'));
+        return view('usuarios.index', compact('users'));
     }
     public function show($id)
     {

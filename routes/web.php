@@ -19,7 +19,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Rutas del Mantenedor de Usuarios
     Route::get('/usuarios', [UserController::class, 'index'])->name('users.index');
-    // ... Aquí puedes agregar las rutas para crear, editar, etc.
+    Route::delete('/usuarios/{user}', [UserController::class, 'destroy'])->name('users.destroy'); // <-- **Esta es la línea que falta**
 
     // Rutas del Mantenedor de Productos
     Route::get('/productos', [ProductController::class, 'index'])->name('products.index');
@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     // Rutas del Mantenedor de Clientes
     Route::get('/clientes', [ClientController::class, 'index'])->name('clients.index');
     // ... Aquí puedes agregar las rutas para el CRUD de clientes
+    
 });
 
 Route::middleware('auth')->group(function () {
