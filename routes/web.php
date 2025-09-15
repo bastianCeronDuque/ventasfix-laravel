@@ -7,9 +7,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 
+// Esta es la única ruta que maneja la página de inicio
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
+
 // Rutas protegidas por autenticación
 Route::middleware(['auth'])->group(function () {
     // Rutas del Dashboard
