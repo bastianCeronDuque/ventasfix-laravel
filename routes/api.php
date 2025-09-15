@@ -11,22 +11,18 @@ use App\Http\Controllers\Api\AuthController;
 Route::prefix('auth')->group(function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
 });
 
 // Rutas protegidas por JWT
-Route::middleware('auth.jwt')->prefix('api')->group(function () {
+Route::middleware('jwt')->group(function () {
     // Rutas de gestión de token
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('auth/refresh', [AuthController::class, 'refresh']);
+    Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('auth/me', [AuthController::class, 'me']);
 
-    // Rutas API para Usuarios (protegidas por JWT)
+    // Rutas API para recursos
     Route::apiResource('users', UserController::class);
-
-    // Rutas API para Productos
     Route::apiResource('products', ProductController::class);
-
-    // Rutas API para Clientes
     Route::apiResource('clients', ClientController::class);
 });
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
