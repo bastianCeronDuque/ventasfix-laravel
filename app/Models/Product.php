@@ -55,7 +55,9 @@ class Product extends Model
      */
     public function getPrecioVentaAttribute()
     {
-        return round($this->precio_neto * 1.19, 2);
+        // Asegúrate que el precio_neto sea un valor válido antes de hacer el cálculo
+        $precioNeto = floatval($this->precio_neto);
+        return round($precioNeto * 1.19, 2);
     }
 
     /**

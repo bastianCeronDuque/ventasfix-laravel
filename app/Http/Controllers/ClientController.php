@@ -30,8 +30,8 @@ class ClientController extends Controller
             'razon_social' => 'required',
             'telefono' => 'required',
             'direccion' => 'required',
-            'nombre_de_la_persona_de_contacto' => 'required',
-            'email_de_la_persona_de_contacto' => 'required|email|unique:clients',
+            'nombre_contacto' => 'required',
+            'email_contacto' => 'required|email|unique:clients',
         ]);
 
         Client::create($request->all());

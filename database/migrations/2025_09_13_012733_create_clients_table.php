@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('razon_social');
             $table->string('telefono');
             $table->string('direccion');
-            $table->string('nombre_de_la_persona_de_contacto');
-            $table->string('email_de_la_persona_de_contacto');
+            $table->string('nombre_contacto');
+            $table->string('email_contacto');
             $table->timestamps();
         });
     }
