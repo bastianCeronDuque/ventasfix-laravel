@@ -27,8 +27,16 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'email' => [
+                'required', 
+                'string', 
+                'email',
+                'regex:/^[a-z]+\.[a-z]+@ventasfix\.cl$/i'
+            ],
+            'password' => [
+                'required', 
+                'string'
+            ],
         ];
     }
 
@@ -81,5 +89,12 @@ class LoginRequest extends FormRequest
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.regex' => 'El correo electrónico debe seguir el formato nombre.apellido@ventasfix.cl',
+        ];
     }
 }

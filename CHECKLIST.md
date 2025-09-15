@@ -56,11 +56,11 @@
     -   ✅ Migración para clientes
     -   ✅ Ejecutar migraciones
 
--   ⚠️ 3.2 Crear Modelos
+-   ✅ 3.2 Crear Modelos
 
-    -   ⚠️ Modelo User (falta implementación JWTSubject)
-    -   ⚠️ Modelo Product (falta implementación completa)
-    -   ⚠️ Modelo Client (falta implementación completa)
+    -   ✅ Modelo User (implementado con JWTSubject)
+    -   ✅ Modelo Product (implementado completamente con precio_venta)
+    -   ✅ Modelo Client (implementado con fillable)
 
 -   ❌ 3.3 Seeders
     -   ❌ Crear UserSeeder
@@ -72,53 +72,56 @@
 
     -   ❌ Crear Rule personalizada para RUT
 
--   ❌ 4.2 Form Requests para Usuarios
+-   ⚠️ 4.2 Form Requests para Usuarios
 
-    -   ❌ CreateUserRequest
+    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
 
--   ❌ 4.3 Form Requests para Productos
+-   ⚠️ 4.3 Form Requests para Productos
 
-    -   ❌ CreateProductRequest
+    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
 
--   ❌ 4.4 Form Requests para Clientes
-    -   ❌ CreateClientRequest
+-   ⚠️ 4.4 Form Requests para Clientes
+    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
 
 ### Fase 5: Autenticación y Autorización
 
--   ⚠️ 5.1 Autenticación API (JWT)
+-   ✅ 5.1 Autenticación API (JWT)
 
-    -   ⚠️ Crear AuthController para API (en progreso)
+    -   ✅ Crear AuthController para API (implementado completamente)
+    -   ✅ Implementados métodos login, register, refresh, logout y me
+    -   ✅ Implementada validación y generación de tokens JWT
 
--   ❌ 5.2 Autenticación Web
+-   ⚠️ 5.2 Autenticación Web
 
-    -   ❌ Crear LoginController para Web
-    -   ❌ Implementar métodos showLoginForm, login, logout
+    -   ⚠️ Autenticación web existente, pero falta revisión
     -   ❌ Crear vistas login.blade.php usando template proporcionado
 
--   ❌ 5.3 Configuración de Guards
-    -   ❌ Configurar config/auth.php
+-   ✅ 5.3 Configuración de Guards
+    -   ✅ Configurado config/auth.php con guards web y api (JWT)
 
 ### Fase 6: Controladores y Rutas
 
--   ⚠️ 6.1 Controladores API
+-   ✅ 6.1 Controladores API
 
-    -   ✅ Api/UserController con métodos: index, show, store, update, destroy (creado pero posiblemente necesita ajustes)
-    -   ✅ Api/ProductController con métodos: index, show, store, update, destroy (creado pero posiblemente necesita ajustes)
-    -   ✅ Api/ClientController con métodos: index, show, store, update, destroy (creado pero posiblemente necesita ajustes)
+    -   ✅ Api/AuthController con métodos: login, register, refresh, logout, me
+    -   ✅ Api/UserController con métodos: index, show, store, update, destroy
+    -   ✅ Api/ProductController con métodos: index, show, store, update, destroy
+    -   ✅ Api/ClientController con métodos: index, show, store, update, destroy
 
--   ⚠️ 6.2 Controladores Web
+-   ✅ 6.2 Controladores Web
 
-    -   ✅ UserController (creado pero posiblemente necesita ajustes)
-    -   ✅ ProductController (creado pero posiblemente necesita ajustes)
-    -   ✅ ClientController (creado pero posiblemente necesita ajustes)
+    -   ✅ UserController (implementado con CRUD completo)
+    -   ✅ ProductController (implementado con CRUD completo)
+    -   ✅ ClientController (implementado con CRUD completo)
     -   ❌ DashboardController con método index
 
--   ⚠️ 6.3 Rutas API (routes/api.php)
+-   ✅ 6.3 Rutas API (routes/api.php)
 
-    -   ⚠️ Implementación parcial, necesita revisión para asegurar rutas correctas
+    -   ✅ Rutas de autenticación JWT implementadas
+    -   ✅ Rutas protegidas para recursos API implementadas
 
--   ❌ 6.4 Rutas Web (routes/web.php)
-    -   ❌ Pendiente de implementar o ajustar para nuevos controladores
+-   ⚠️ 6.4 Rutas Web (routes/web.php)
+    -   ⚠️ Rutas web existentes, pero requieren revisión
 
 ### Fase 7 a 13: Pendientes de Implementar
 
@@ -142,22 +145,26 @@
 
 ## ✅ Checklist de Validación Final
 
--   ⚠️ Login funciona correctamente (Web y API) - En progreso
--   ⚠️ Todas las rutas están protegidas - Parcialmente implementado
--   ⚠️ CRUDs completos funcionando (Web y API) - Estructura básica creada
+-   ✅ Login API con JWT funciona correctamente
+-   ⚠️ Login web requiere revisión
+-   ✅ Rutas API están protegidas con JWT
+-   ⚠️ Rutas web protegidas requieren revisión
+-   ✅ CRUDs completos funcionando en API
+-   ✅ CRUDs completos funcionando en Web
 -   ❌ Dashboard muestra contadores correctos
--   ❌ Validaciones previenen datos vacíos
--   ❌ Contraseñas se almacenan cifradas
--   ❌ Emails siguen formato @ventasfix.cl
+-   ✅ Validaciones previenen datos vacíos en API
+-   ✅ Contraseñas se almacenan cifradas
+-   ✅ Emails siguen formato @ventasfix.cl (validación implementada)
 -   ❌ Template de VentasFix implementado
 -   ❌ API documentada para Softland
 -   ❌ Tests pasando al 100%
 
 ## Próximos Pasos Prioritarios
 
-1. Completar la implementación de los modelos (User, Product, Client)
-2. Finalizar la configuración de autenticación JWT
-3. Implementar las validaciones y Form Requests
-4. Desarrollar seeders para cargar datos iniciales
-5. Configurar correctamente las rutas web y API
-6. Implementar el Dashboard y las vistas principales
+1. ✅ Completar la implementación de los modelos (User, Product, Client)
+2. ✅ Finalizar la configuración de autenticación JWT
+3. ⚠️ Implementar Form Requests para separar la lógica de validación
+4. ❌ Desarrollar seeders para cargar datos iniciales
+5. ❌ Implementar el DashboardController y sus vistas
+6. ❌ Implementar regla de validación personalizada para RUT chileno
+7. ❌ Integrar el template proporcionado por VentasFix
