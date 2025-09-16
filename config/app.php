@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\ServiceProvider;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -134,10 +136,11 @@ return [
     |
     */
 
-    'providers' => [
-        // Otros providers...
+    'providers' => ServiceProvider::defaultProviders()->merge([
+        // Otros providers personalizados...
         Freshwork\ChileanBundle\Laravel\ChileanBundleServiceProvider::class,
-    ],
+        Illuminate\Validation\ValidationServiceProvider::class,
+    ])->toArray(),
 
     /*
     |--------------------------------------------------------------------------
