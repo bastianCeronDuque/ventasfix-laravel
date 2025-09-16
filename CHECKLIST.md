@@ -72,16 +72,19 @@
 
     -   ✅ Crear Rule personalizada para RUT (implementada con freshwork/chilean-bundle)
 
--   ⚠️ 4.2 Form Requests para Usuarios
+-   ✅ 4.2 Form Requests para Usuarios
 
-    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
+    -   ✅ Implementado UserRequest con validación de formato de email @ventasfix.cl
+    -   ✅ Controlador actualizado para usar UserRequest en lugar de validación inline
 
--   ⚠️ 4.3 Form Requests para Productos
+-   ✅ 4.3 Form Requests para Productos
 
-    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
+    -   ✅ Implementado ProductRequest con validaciones requeridas
+    -   ✅ Controlador actualizado para usar ProductRequest en lugar de validación inline Requests
 
 -   ✅ 4.4 Form Requests para Clientes
     -   ✅ Implementado ClientRequest con validación de RUT chileno
+    -   ✅ Controlador actualizado para usar ClientRequest en lugar de validación inline
 
 ### Fase 5: Autenticación y Autorización
 
@@ -91,10 +94,10 @@
     -   ✅ Implementados métodos login, register, refresh, logout y me
     -   ✅ Implementada validación y generación de tokens JWT
 
--   ⚠️ 5.2 Autenticación Web
+-   ✅ 5.2 Autenticación Web
 
-    -   ⚠️ Autenticación web existente, pero falta revisión
-    -   ❌ Crear vistas login.blade.php usando template proporcionado
+    -   ✅ Autenticación web implementada completamente
+    -   ✅ Vistas login.blade.php usando template proporcionado
 
 -   ✅ 5.3 Configuración de Guards
     -   ✅ Configurado config/auth.php con guards web y api (JWT)
@@ -188,6 +191,7 @@
 -   ✅ CRUDs completos funcionando en Web
 -   ✅ Dashboard muestra contadores correctos
 -   ✅ Validaciones previenen datos vacíos en API
+-   ✅ Validación de RUT chileno implementada correctamente
 -   ✅ Contraseñas se almacenan cifradas
 -   ✅ Emails siguen formato @ventasfix.cl (validación implementada)
 -   ✅ Template de VentasFix implementado
@@ -198,7 +202,7 @@
 
 1. ✅ Completar la implementación de los modelos (User, Product, Client)
 2. ✅ Finalizar la configuración de autenticación JWT
-3. ⚠️ Implementar Form Requests para separar la lógica de validación
+3. ⚠️ Implementar Form Requests para separar la lógica de validación (parcialmente completado)
 4. ❌ Desarrollar seeders para cargar datos iniciales
 5. ✅ Implementar el DashboardController y sus vistas
 6. ✅ Implementar regla de validación personalizada para RUT chileno

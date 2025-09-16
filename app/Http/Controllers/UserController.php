@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 use App\Rules\ValidRutChileno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -35,24 +36,12 @@ class UserController extends Controller
     /**
      * Agregar un nuevo usuario
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        // Validamos los datos recibidos del formulario
-        $request->validate([
-            'rut' => ['required', 'unique:users', new ValidRutChileno],
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
-            'email' => [
-                'required',
-                'email',
-                'unique:users',
-                'regex:/^[a-z]+\.[a-z]+@ventasfix\.cl$/i'
-            ],
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        // Los datos ya están validados por el UserRequest
 
         // Formatear el RUT antes de guardar
         $rutFormateado = ValidRutChileno::formatearParaGuardar($request->rut);
@@ -99,32 +88,18 @@ class UserController extends Controller
     /**
      * Actualizar un usuario por su id
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         $user = User::findOrFail($id);
 
-        // Validamos los datos, pero permitimos que el email y rut sean los mismos si no cambian
-        $request->validate([
-            'rut' => ['required', 'unique:users,rut,' . $user->id, new ValidRutChileno],
-            'nombre' => 'required|string',
-            'apellido' => 'required|string',
-            'email' => [
-                'required',
-                'email',
-                'unique:users,email,' . $user->id,
-                'regex:/^[a-z]+\.[a-z]+@ventasfix\.cl$/i'
-            ],
-        ]);
+        // Los datos ya están validados por el UserRequest
 
         // Si se proporciona una nueva contraseña, la actualizamos
         if ($request->filled('password')) {
-            $request->validate([
-                'password' => 'string|min:8|confirmed',
-            ]);
             $user->password = Hash::make($request->password);
         }
 

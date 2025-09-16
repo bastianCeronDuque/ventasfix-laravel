@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product; // Importa el modelo de Producto
+use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -21,22 +22,9 @@ class ProductController extends Controller
     }
 
     // Método para guardar un nuevo producto en la base de datos
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        // Validación de datos según la rúbrica
-        $request->validate([
-            'sku' => 'required|unique:products',
-            'nombre' => 'required',
-            'descripcion_corta' => 'required',
-            'descripcion_larga' => 'required',
-            'imagen_url' => 'required|url', // URL de la imagen
-            'precio_neto' => 'required|numeric',
-            'stock_actual' => 'required|integer',
-            'stock_minimo' => 'required|integer',
-            'stock_bajo' => 'required|integer',
-            'stock_alto' => 'required|integer',
-        ]);
-
+        // Los datos ya están validados por el ProductRequest
         Product::create($request->all());
 
         return redirect()->route('productos.index')
@@ -56,14 +44,9 @@ class ProductController extends Controller
     }
 
     // Método para actualizar un producto en la base de datos
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        $request->validate([
-            'sku' => 'required|unique:products,sku,' . $product->id,
-            'nombre' => 'required',
-            // ... valida el resto de los campos de la misma manera
-        ]);
-
+        // Los datos ya están validados por el ProductRequest
         $product->update($request->all());
 
         return redirect()->route('productos.index')
