@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -123,4 +122,37 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Service Providers
+    |--------------------------------------------------------------------------
+    |
+    | Here you may list the service providers that are used by your application.
+    | Laravel will load this array with the providers defined in your
+    | application's composer.json file, and you may also add your own
+    | providers here as needed.
+    |
+    */
+
+    'providers' => [
+        // Otros providers...
+        Freshwork\ChileanBundle\Laravel\ChileanBundleServiceProvider::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Aliases
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the class aliases that are used by your application.
+    | Laravel will load this array with the aliases defined in your
+    | application's composer.json file, and you may also add your own
+    | aliases here as needed.
+    |
+    */
+
+    'aliases' => [
+        // Otros aliases...
+        'Rut' => Freshwork\ChileanBundle\Rut::class,
+    ],
 ];

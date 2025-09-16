@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Rules\ValidRutChileno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,7 +42,7 @@ class UserController extends Controller
     {
         // Validamos los datos recibidos del formulario
         $request->validate([
-            'rut' => 'required|unique:users',
+            'rut' => ['required', 'unique:users', new ValidRutChileno],
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'email' => [
@@ -53,9 +54,12 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
+        // Formatear el RUT antes de guardar
+        $rutFormateado = ValidRutChileno::formatearParaGuardar($request->rut);
+
         // Creamos el nuevo usuario en la base de datos
         User::create([
-            'rut' => $request->rut,
+            'rut' => $rutFormateado,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'email' => $request->email,
@@ -105,7 +109,7 @@ class UserController extends Controller
 
         // Validamos los datos, pero permitimos que el email y rut sean los mismos si no cambian
         $request->validate([
-            'rut' => 'required|unique:users,rut,' . $user->id,
+            'rut' => ['required', 'unique:users,rut,' . $user->id, new ValidRutChileno],
             'nombre' => 'required|string',
             'apellido' => 'required|string',
             'email' => [
@@ -124,7 +128,7 @@ class UserController extends Controller
             $user->password = Hash::make($request->password);
         }
 
-        $user->rut = $request->rut;
+        $user->rut = ValidRutChileno::formatearParaGuardar($request->rut);
         $user->nombre = $request->nombre;
         $user->apellido = $request->apellido;
         $user->email = $request->email;

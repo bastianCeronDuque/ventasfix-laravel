@@ -68,9 +68,9 @@
 
 ### Fase 4: Validaciones y Form Requests
 
--   ❌ 4.1 Validación RUT Chileno
+-   ✅ 4.1 Validación RUT Chileno
 
-    -   ❌ Crear Rule personalizada para RUT
+    -   ✅ Crear Rule personalizada para RUT (implementada con freshwork/chilean-bundle)
 
 -   ⚠️ 4.2 Form Requests para Usuarios
 
@@ -80,8 +80,8 @@
 
     -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
 
--   ⚠️ 4.4 Form Requests para Clientes
-    -   ⚠️ Validaciones implementadas en controladores, pero faltan Form Requests
+-   ✅ 4.4 Form Requests para Clientes
+    -   ✅ Implementado ClientRequest con validación de RUT chileno
 
 ### Fase 5: Autenticación y Autorización
 
@@ -201,7 +201,7 @@
 3. ⚠️ Implementar Form Requests para separar la lógica de validación
 4. ❌ Desarrollar seeders para cargar datos iniciales
 5. ✅ Implementar el DashboardController y sus vistas
-6. ❌ Implementar regla de validación personalizada para RUT chileno
+6. ✅ Implementar regla de validación personalizada para RUT chileno
 7. ✅ Integrar el template proporcionado por VentasFix
 8. ⚠️ Documentar API para Softland
 9. ❌ Implementar pruebas unitarias y de integración
