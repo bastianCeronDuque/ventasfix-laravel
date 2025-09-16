@@ -18,7 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('usuarios', UserController::class)->names('users');
 
     // Rutas del Mantenedor de Productos
-    Route::resource('productos', ProductController::class)->names('products');
+    Route::resource('productos', ProductController::class)
+        ->names('products')
+        ->parameters(['productos' => 'product']);
+
 
     // Rutas del Mantenedor de Clientes
     Route::get('/clientes', [ClientController::class, 'index'])->name('clients.index');
@@ -30,4 +33,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

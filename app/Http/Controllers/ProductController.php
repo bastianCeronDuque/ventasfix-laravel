@@ -12,13 +12,13 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('productos.index', compact('products'));
+        return view('products.index', compact('products'));
     }
 
     // Método para mostrar el formulario de creación de un nuevo producto
     public function create()
     {
-        return view('productos.create');
+        return view('products.create');
     }
 
     // Método para guardar un nuevo producto en la base de datos
@@ -27,20 +27,22 @@ class ProductController extends Controller
         // Los datos ya están validados por el ProductRequest
         Product::create($request->all());
 
-        return redirect()->route('productos.index')
+        return redirect()->route('products.index')
             ->with('success', 'Producto creado exitosamente.');
     }
 
     // Método para mostrar los detalles de un producto específico
     public function show(Product $product)
     {
-        return view('productos.show', compact('product'));
+        return view('products.show', [
+            'product' => $product, // 👈 esta línea es clave
+        ]);
     }
 
     // Método para mostrar el formulario de edición de un producto
     public function edit(Product $product)
     {
-        return view('productos.edit', compact('product'));
+        return view('products.edit', compact('product'));
     }
 
     // Método para actualizar un producto en la base de datos
@@ -49,7 +51,7 @@ class ProductController extends Controller
         // Los datos ya están validados por el ProductRequest
         $product->update($request->all());
 
-        return redirect()->route('productos.index')
+        return redirect()->route('products.index')
             ->with('success', 'Producto actualizado exitosamente.');
     }
 

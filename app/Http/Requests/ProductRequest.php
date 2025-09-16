@@ -20,32 +20,27 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules = [
-            'nombre' => 'required',
-            'descripcion_corta' => 'required',
-            'descripcion_larga' => 'required',
-            'imagen_url' => 'required|url',
-            'precio_neto' => 'required|numeric',
-            'stock_actual' => 'required|integer',
-            'stock_minimo' => 'required|integer',
-            'stock_bajo' => 'required|integer',
-            'stock_alto' => 'required|integer',
-        ];
+        // Obtiene la instancia del modelo del producto desde la ruta
+        $product = $this->route('product');
 
-        // Reglas específicas para creación o actualización
-        if ($this->isMethod('POST')) {
-            // Creación - SKU debe ser único
-            $rules['sku'] = 'required|unique:products';
-        } else {
-            // Actualización - SKU debe ser único excepto para el registro actual
-            $productId = $this->route('product') ? $this->route('product')->id : null;
-            $rules['sku'] = [
+        return [
+            'sku' => [
                 'required',
-                Rule::unique('products')->ignore($productId)
-            ];
-        }
-
-        return $rules;
+                'string',
+                'max:255',
+                // Esta única regla maneja ambos casos (creación y actualización)
+                Rule::unique('products')->ignore($product->id),
+            ],
+            'nombre' => 'required|string|max:255',
+            'descripcion_corta' => 'nullable|string',
+            'descripcion_larga' => 'nullable|string',
+            'imagen_url' => 'nullable|url',
+            'precio_neto' => 'required|numeric|min:0',
+            'stock_actual' => 'required|integer|min:0',
+            'stock_minimo' => 'required|integer|min:0',
+            'stock_bajo' => 'required|integer|min:0',
+            'stock_alto' => 'required|integer|min:0',
+        ];
     }
 
     /**
