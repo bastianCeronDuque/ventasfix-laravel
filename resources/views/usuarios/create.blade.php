@@ -1,53 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.vuexy')
 
 @section('content')
-    <div class="container-fluid">
-        <h1 class="h3 mb-4 text-gray-800">Crear Nuevo Usuario</h1>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="py-3 mb-4"><span class="text-muted fw-light">Gestión de Usuarios /</span> Crear Usuario</h4>
 
-        {{-- Manejo de errores de validación --}}
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <form action="{{ route('users.store') }}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}">
+    <div class="card">
+        <h5 class="card-header">Formulario de Nuevo Usuario</h5>
+        <div class="card-body">
+            <form action="{{ route('users.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ old('nombre') }}" required>
+                        @error('nombre') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}">
+                    <div class="col-md-6 mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" name="apellido" value="{{ old('apellido') }}" required>
+                        @error('apellido') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="rut">RUT</label>
-                        <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="rut" class="form-label">RUT</label>
+                        <input type="text" class="form-control" id="rut" name="rut" value="{{ old('rut') }}" required>
+                        @error('rut') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
+                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                        @error('password') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="password_confirmation">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                    <div class="col-md-6 mb-3">
+                        <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                     </div>
-
-                    <button type="submit" class="btn btn-success">Guardar Usuario</button>
-                    <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
-                </form>
-            </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Guardar Usuario</button>
+                <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Cancelar</a>
+            </form>
         </div>
     </div>
+</div>
 @endsection

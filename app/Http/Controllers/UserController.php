@@ -8,23 +8,17 @@ class UserController extends Controller
 {
     public function index()
     {
-        // Obtenemos todos los usuarios de la base de datos
         $users = User::all();
-
-        // Retornamos la vista y pasamos los usuarios a la vista
         return view('usuarios.index', compact('users'));
     }
-    public function show($id)
-    {
-        // Buscamos un usuario por su ID. Si no lo encuentra, Laravel lanza un error 404.
-        $user = User::findOrFail($id);
 
-        // Retorna la vista y pasa los datos del usuario
-        return view('usuarios.show', compact('user'));
+    public function create()
+    {
+        return view('usuarios.create');
     }
+
     public function store(Request $request)
     {
-        // Validamos los datos recibidos del formulario
         $request->validate([
             'rut' => 'required|unique:users',
             'nombre' => 'required|string',
@@ -33,22 +27,31 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Creamos el nuevo usuario en la base de datos
         User::create([
             'rut' => $request->rut,
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'email' => $request->email,
-            'password' => bcrypt($request->password), // Ciframos la contraseña
+            'password' => bcrypt($request->password),
         ]);
 
         return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
     }
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
 
-        // Validamos los datos, pero permitimos que el email sea el mismo si no cambia
+    // Método show: Muestra los detalles de un usuario
+    public function show(User $usuario)
+    {
+        return view('usuarios.show', compact('usuario'));
+    }
+
+    // Método edit: Muestra el formulario de edición
+    public function edit(User $usuario)
+    {
+        return view('usuarios.edit', compact('usuario'));
+    }
+
+    public function update(Request $request, User $user)
+    {
         $request->validate([
             'rut' => 'required|unique:users,rut,' . $user->id,
             'nombre' => 'required|string',
@@ -56,16 +59,21 @@ class UserController extends Controller
             'email' => 'required|email|unique:users,email,' . $user->id,
         ]);
 
-        // Actualizamos el usuario
-        $user->update($request->all());
+        $data = $request->all();
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            unset($data['password']); // No actualiza la contraseña si no se llenó el campo
+        }
+
+        $user->update($data);
 
         return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
     }
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
 
+    public function destroy(User $user)
+    {
+        $user->delete();
         return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
     }
 }
