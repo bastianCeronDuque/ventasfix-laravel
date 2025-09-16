@@ -1,5 +1,4 @@
 @extends('layouts.vuexy')
-
 @section('content')
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -17,6 +16,12 @@
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-users fa-2x text-gray-300"></i>
+                                </div>
+                                {{-- Botón para ir a Usuarios --}}
+                                <div class="mt-3 text-center">
+                                    <a href="{{ route('users.index') }}" class="btn btn-sm btn-primary">
+                                        Ver Usuarios
+                                    </a>
                                 </div>
                             </div>
                         </div>
