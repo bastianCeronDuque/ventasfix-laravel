@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Registro | Vuexy - Bootstrap Admin Template</title>
+    <title>Registro Ventasfix</title>
 
     <meta name="description" content="" />
 
@@ -93,7 +93,7 @@
                       fill="#7367F0" />
                   </svg>
                 </span>
-                <span class="app-brand-text demo text-body fw-bold">Vuexy</span>
+                <span class="app-brand-text demo text-body fw-bold">Ventasfix</span>
               </a>
             </div>
             <h4 class="mb-1 pt-2">La aventura comienza aquí 🚀</h4>
