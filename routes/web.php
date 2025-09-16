@@ -18,7 +18,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('usuarios', UserController::class)->names('users');
 
     // Rutas del Mantenedor de Productos
-    Route::get('/productos', [ProductController::class, 'index'])->name('products.index');
+    Route::resource('productos', ProductController::class)->names('products');
 
     // Rutas del Mantenedor de Clientes
     Route::get('/clientes', [ClientController::class, 'index'])->name('clients.index');
