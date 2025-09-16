@@ -14,7 +14,8 @@
     kanbanAddBoardBtn = document.querySelector('.kanban-add-board-btn'),
     datePicker = document.querySelector('#due-date'),
     select2 = $('.select2'), // ! Using jquery vars due to select2 jQuery dependency
-    assetsPath = document.querySelector('html').getAttribute('data-assets-path');
+    rawAssetsPath = document.querySelector('html').getAttribute('data-assets-path'),
+    assetsPath = rawAssetsPath.endsWith('/') ? rawAssetsPath : rawAssetsPath + '/';
 
   // Init kanban Offcanvas
   const kanbanOffcanvas = new bootstrap.Offcanvas(kanbanSidebar);

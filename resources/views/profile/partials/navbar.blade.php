@@ -15,16 +15,20 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{ route('users.show', auth()->user()->id) }}">
               <i class="ti ti-user me-3 ti-md"></i>
               <span class="align-middle">Perfil</span>
             </a>
+
           </li>
           <li>
-            <a class="dropdown-item" href="#">
-              <i class="ti ti-logout me-3 ti-md"></i>
-              <span class="align-middle">Salir</span>
-            </a>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="dropdown-item">
+                <i class="ti ti-logout me-3 ti-md"></i>
+                <span class="align-middle">Salir</span>
+              </button>
+            </form>
           </li>
         </ul>
       </li>

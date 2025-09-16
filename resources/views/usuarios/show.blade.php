@@ -21,6 +21,7 @@
             </p>
             
             <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Volver a la lista</a>
+            <a href="{{ route('dashboard') }}" class="btn btn-info mt-3">Inicio</a>
             <a href="{{ route('users.edit', $usuario->id) }}" class="btn btn-warning mt-3">Editar Usuario</a>
         </div>
     </div>
