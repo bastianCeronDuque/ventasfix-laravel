@@ -169,12 +169,14 @@ git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
 4. **CRUD**: Gestiona ventas desde interfaz
 
 # Autenticación
+
 POST /api/register     # Registro de usuario
 POST /api/login        # Inicio de sesión
 GET  /api/me           # Perfil del usuario (requiere auth)
 POST /api/logout       # Cerrar sesión
 
 # Gestión de Ventas (CRUD)
+
 GET    /api/ventas         # Listar ventas
 POST   /api/ventas         # Crear nueva venta
 GET    /api/ventas/{id}    # Ver venta específica
