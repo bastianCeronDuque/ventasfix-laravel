@@ -140,24 +140,24 @@ DELETE /api/projects/{id}  # Eliminar proyecto
 # Clonar e instalar
 
 git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
-cd ventasfix
-composer install
-npm install
+-   **cd ventasfix**
+-   **composer install**
+-   **npm install**
 
 # Configurar
 
-cp .env.example .env
-php artisan key:generate
-php artisan jwt:secret
+-   **cp .env.example .env**
+-   **php artisan key:generate**
+-   **php artisan jwt:secret**
 
 # Base de datos
 
-php artisan migrate
+-   **php artisan migrate**
 
 # Compilar y ejecutar
 
-npm run build
-php artisan serve
+-   **npm run build**
+-   **php artisan serve**
 
 ````
 
