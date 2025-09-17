@@ -9,7 +9,7 @@ VentasFix es una aplicación web desarrollada con Laravel que permite gestionar 
 
 ## Arquitectura MVC
 
-TechSolutions implementa el patrón Modelo-Vista-Controlador (MVC):
+VentasFix implementa el patrón Modelo-Vista-Controlador (MVC):
 
 ### 📊 Modelo (Model)
 
