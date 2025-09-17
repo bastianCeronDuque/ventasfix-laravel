@@ -22,15 +22,8 @@ class ProductRequest extends FormRequest
     {
         // Obtiene la instancia del modelo del producto desde la ruta
         $product = $this->route('product');
-
-        return [
-            'sku' => [
-                'required',
-                'string',
-                'max:255',
-                // Esta única regla maneja ambos casos (creación y actualización)
-                Rule::unique('products')->ignore($product->id),
-            ],
+        
+        $rules = [
             'nombre' => 'required|string|max:255',
             'descripcion_corta' => 'nullable|string',
             'descripcion_larga' => 'nullable|string',
@@ -41,6 +34,22 @@ class ProductRequest extends FormRequest
             'stock_bajo' => 'required|integer|min:0',
             'stock_alto' => 'required|integer|min:0',
         ];
+        
+        // Diferentes reglas para SKU dependiendo si es creación o actualización
+        if ($this->isMethod('POST')) {
+            // Creación - SKU debe ser único
+            $rules['sku'] = 'required|string|max:255|unique:products';
+        } else {
+            // Actualización - SKU debe ser único excepto para el producto actual
+            $rules['sku'] = [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('products')->ignore($product),
+            ];
+        }
+        
+        return $rules;
     }
 
     /**
