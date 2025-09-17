@@ -170,7 +170,7 @@ git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
 
 ## API Endpoints
 
-```http
+```
 # Autenticación
 POST /api/register     # Registro de usuario
 POST /api/login        # Inicio de sesión
