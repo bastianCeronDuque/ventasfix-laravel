@@ -1,4 +1,4 @@
-# VentasFix - Gestión de Proyectos
+# VentasFix
 
 VentasFix es una aplicación web desarrollada con Laravel que permite gestionar un sistema de ventas moderno y eficiente. La aplicación está diseñada para trabajar con una interfaz gráfica de usuario, gestionar trabajadores y permitir la interacción con aplicaciones de terceros mediante APIs.  
 
