@@ -14,7 +14,7 @@ VentasFix implementa el patrón Modelo-Vista-Controlador (MVC):
 ### 📊 Modelo (Model)
 
 -   Clases que encapsulan datos y lógica de negocio
--   Relaciones entre entidades (User-Project)
+-   Relaciones entre entidades (User-Ventas)
 -   Validación de datos y reglas de negocio
 -   Interacción con base de datos MySQL
 
@@ -22,7 +22,7 @@ VentasFix implementa el patrón Modelo-Vista-Controlador (MVC):
 
 -   Interfaces de usuario usando Blade Templates
 -   Separación clara de lógica de presentación
--   Componentes reutilizables (UF Value)
+-   Componentes reutilizables
 -   Validación en tiempo real con JavaScript
 
 ### 🧠 Controlador (Controller)
@@ -35,32 +35,32 @@ VentasFix implementa el patrón Modelo-Vista-Controlador (MVC):
 ## Características Principales
 
 -   **Autenticación Híbrida**: JWT para API, sesiones para web
--   **CRUD de Proyectos**: Gestión completa con autorización
--   **Dashboard Ejecutivo**: Estadísticas y proyectos recientes
+-   **CRUD completo**: Crear, Leer, Actualizar y Eliminar registros
+-   **Dashboard**: EEstadísticas y registros recientes
 -   **API REST**: Endpoints protegidos con JWT
--   **Componentes Externos**: Integración con API Banco Central
+-   **Componentes Externos**: Integración con API Softland
 
 ## Tecnologías
 
 -   **Backend**: Laravel 12.x, PHP 8.2+
 -   **Base de Datos**: MySQL
+-   **Frontend**: Vuexy Template, Bootstrap 5, JavaScript, Blade Templates  
+-   **Plugins**: jQuery, Tabler Icons, Perfect Scrollbar, Hammer.js, Waves, Typeahead.js
 -   **Autenticación**: JWT (tymon/jwt-auth)
--   **Frontend**: Bootstrap 5, JavaScript, Blade Templates
--   **Build Tools**: Vite
+-   **Build Tools**: Vite / Laravel Mix  
 
 ## Instalación
 
 ```bash
 # Clonar e instalar
-git clone https://github.com/bastianCeronDuque/techsolutions.git
-cd techsolutions
+git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
+cd ventasfix-laravel
 composer install
 npm install
 
 # Configurar
 cp .env.example .env
 php artisan key:generate
-php artisan jwt:secret
 
 # Base de datos
 php artisan migrate
@@ -106,7 +106,7 @@ resources/
 
 ## Flujo MVC en TechSolutions
 
-1. **Request**: Usuario envía una solicitud (ej. crear proyecto)
+1. **Request**: Usuario envía una solicitud (ej. crear venta)
 2. **Router**: La ruta dirige la solicitud al controlador adecuado
 3. **Controller**: Valida datos, interactúa con modelos y determina respuesta
 4. **Model**: Aplica reglas de negocio y actualiza la base de datos
