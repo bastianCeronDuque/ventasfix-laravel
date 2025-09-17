@@ -15,7 +15,7 @@ Route::prefix('auth')->group(function () {
 });
 
 // Rutas protegidas por JWT
-Route::middleware('jwt')->group(function () {
+Route::middleware('jwt.auth')->group(function () {
     // Rutas de gestión de token
     Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::get('auth/me', [AuthController::class, 'me']);

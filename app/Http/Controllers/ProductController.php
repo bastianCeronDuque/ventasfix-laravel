@@ -25,7 +25,7 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         // Los datos ya están validados por el ProductRequest
-        Product::create($request->all());
+        Product::create($request->validated());
 
         return redirect()->route('products.index')
             ->with('success', 'Producto creado exitosamente.');
@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function update(ProductRequest $request, Product $product)
     {
         // Los datos ya están validados por el ProductRequest
-        $product->update($request->all());
+        $product->update($request->validated());
 
         return redirect()->route('products.index')
             ->with('success', 'Producto actualizado exitosamente.');
@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('productos.index')
+        return redirect()->route('products.index')
             ->with('success', 'Producto eliminado exitosamente.');
     }
 }
