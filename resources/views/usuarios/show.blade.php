@@ -7,14 +7,14 @@
     <div class="card">
         <h5 class="card-header">Detalles del Usuario</h5>
         <div class="card-body">
-            <p><strong>ID:</strong> {{ $usuario->id }}</p>
-            <p><strong>RUT:</strong> {{ $usuario->rut }}</p>
-            <p><strong>Nombre:</strong> {{ $usuario->nombre }}</p>
-            <p><strong>Apellido:</strong> {{ $usuario->apellido }}</p>
-            <p><strong>Email:</strong> {{ $usuario->email }}</p>
+            <p><strong>ID:</strong> {{ $user->id }}</p>
+            <p><strong>RUT:</strong> {{ $user->rut }}</p>
+            <p><strong>Nombre:</strong> {{ $user->nombre }}</p>
+            <p><strong>Apellido:</strong> {{ $user->apellido }}</p>
+            <p><strong>Email:</strong> {{ $user->email }}</p>
             <p><strong>Registrado desde:</strong> 
-                @if ($usuario->created_at)
-                    {{ $usuario->created_at->format('d/m/Y') }}
+                @if ($user->created_at)
+                    {{ $user->created_at->format('d/m/Y') }}
                 @else
                     No disponible
                 @endif
@@ -22,7 +22,7 @@
             
             <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Volver a la lista</a>
             <a href="{{ route('dashboard') }}" class="btn btn-info mt-3">Inicio</a>
-            <a href="{{ route('users.edit', $usuario->id) }}" class="btn btn-warning mt-3">Editar Usuario</a>
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning mt-3">Editar Usuario</a>
         </div>
     </div>
 </div>
