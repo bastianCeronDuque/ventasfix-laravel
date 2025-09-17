@@ -56,10 +56,18 @@ class ClientRequest extends FormRequest
      */
     protected function prepareForValidation(): void
     {
-        // Limpiar el RUT antes de la validación (opcional)
+        // Limpiar el RUT antes de la validación
         if ($this->has('rut_empresa')) {
+            $rut = $this->rut_empresa;
+            
+            // Remover espacios al inicio y final
+            $rut = trim($rut);
+            
+            // Convertir a mayúscula para el dígito verificador K
+            $rut = strtoupper($rut);
+            
             $this->merge([
-                'rut_empresa' => str_replace(['.', ','], '', $this->rut_empresa)
+                'rut_empresa' => $rut
             ]);
         }
     }
@@ -80,6 +88,22 @@ class ClientRequest extends FormRequest
             'email_contacto.required' => 'El email de contacto es obligatorio',
             'email_contacto.email' => 'El formato del email de contacto no es válido',
             'email_contacto.unique' => 'Este email de contacto ya está registrado en el sistema',
+        ];
+    }
+
+    /**
+     * Get custom attribute names for error messages.
+     */
+    public function attributes(): array
+    {
+        return [
+            'rut_empresa' => 'RUT de la empresa',
+            'rubro' => 'rubro',
+            'razon_social' => 'razón social',
+            'telefono' => 'teléfono',
+            'direccion' => 'dirección',
+            'nombre_contacto' => 'nombre de contacto',
+            'email_contacto' => 'email de contacto',
         ];
     }
 }

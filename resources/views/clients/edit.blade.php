@@ -18,6 +18,7 @@
                             <label for="rut_empresa" class="form-label">RUT Empresa <span class="text-danger">*</span></label>
                             <input type="text" class="form-control @error('rut_empresa') is-invalid @enderror" id="rut_empresa" 
                                 name="rut_empresa" value="{{ old('rut_empresa', $client->rut_empresa) }}" required>
+                            <div class="form-text">Ejemplo: 12.345.678-5 o 76.543.210-3</div>
                             @error('rut_empresa')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
