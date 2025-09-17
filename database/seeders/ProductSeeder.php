@@ -76,5 +76,19 @@ class ProductSeeder extends Seeder
             'stock_bajo' => 25,
             'stock_alto' => 150
         ]);
+        
+        // Añadir un producto con precio alto para verificar el cambio en la columna precio_neto
+        Product::create([
+            'sku' => 'PROD-006',
+            'nombre' => 'Servidor Empresarial',
+            'descripcion_corta' => 'Servidor de alto rendimiento',
+            'descripcion_larga' => 'Servidor empresarial con múltiples procesadores, alta capacidad de almacenamiento y memoria RAM extendida.',
+            'imagen_url' => 'https://example.com/images/servidor.jpg',
+            'precio_neto' => 9999999.99, // Valor alto para probar el nuevo límite de la columna
+            'stock_actual' => 10,
+            'stock_minimo' => 2,
+            'stock_bajo' => 3,
+            'stock_alto' => 15
+        ]);
     }
 }

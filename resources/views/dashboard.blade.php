@@ -42,6 +42,12 @@
                                 <div class="col-auto">
                                     <i class="fas fa-box fa-2x text-gray-300"></i>
                                 </div>
+                                {{-- Botón para ir a Productos --}}
+                                <div class="mt-3 text-center">
+                                    <a href="{{ route('products.index') }}" class="btn btn-sm btn-primary">
+                                        Ver Productos
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -60,6 +66,12 @@
                                 </div>
                                 <div class="col-auto">
                                     <i class="fas fa-building fa-2x text-gray-300"></i>
+                                </div>
+                                {{-- Botón para ir a Clientes --}}
+                                <div class="mt-3 text-center">
+                                    <a href="{{ route('clients.index') }}" class="btn btn-sm btn-primary">
+                                        Ver Clientes
+                                    </a>
                                 </div>
                             </div>
                         </div>

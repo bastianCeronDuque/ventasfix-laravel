@@ -24,7 +24,9 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Rutas del Mantenedor de Clientes
-    Route::get('/clientes', [ClientController::class, 'index'])->name('clients.index');
+    Route::resource('clientes', ClientController::class)
+        ->names('clients')
+        ->parameters(['clientes' => 'client']);
 });
 
 Route::middleware('auth')->group(function () {
