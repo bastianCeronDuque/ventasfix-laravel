@@ -168,9 +168,6 @@ git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
 3. **Dashboard**: Accede automáticamente tras login exitoso
 4. **CRUD**: Gestiona ventas desde interfaz
 
-## API Endpoints
-
-```
 # Autenticación
 POST /api/register     # Registro de usuario
 POST /api/login        # Inicio de sesión
