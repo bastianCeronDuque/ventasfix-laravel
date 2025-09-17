@@ -104,7 +104,7 @@ resources/
         └── show.blade.php
 ```
 
-## Flujo MVC en TechSolutions
+## Flujo MVC en VentasFix
 
 1. **Request**: Usuario envía una solicitud (ej. crear venta)
 2. **Router**: La ruta dirige la solicitud al controlador adecuado
