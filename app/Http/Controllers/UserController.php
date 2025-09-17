@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('usuarios.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         // Retorna la vista y pasa los datos del usuario
-        return view('users.show', compact('user'));
+        return view('usuarios.show', compact('user'));
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('users.edit', compact('user'));
+        return view('usuarios.edit', compact('user'));
     }
 
     /**
