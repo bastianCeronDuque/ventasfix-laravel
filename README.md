@@ -1,61 +1,242 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# VentasFix - Gestión de Proyectos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+VentasFix es una aplicación web desarrollada con Laravel que permite gestionar un sistema de ventas moderno y eficiente. La aplicación está diseñada para trabajar con una interfaz gráfica de usuario, gestionar trabajadores y permitir la interacción con aplicaciones de terceros mediante APIs.  
 
-## About Laravel
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
+![PHP](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)
+![JWT](https://img.shields.io/badge/JWT-Auth-green.svg)
+![MVC](https://img.shields.io/badge/Pattern-MVC-orange.svg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Arquitectura MVC
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+TechSolutions implementa el patrón Modelo-Vista-Controlador (MVC):
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 📊 Modelo (Model)
 
-## Learning Laravel
+-   Clases que encapsulan datos y lógica de negocio
+-   Relaciones entre entidades (User-Project)
+-   Validación de datos y reglas de negocio
+-   Interacción con base de datos MySQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🎨 Vista (View)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   Interfaces de usuario usando Blade Templates
+-   Separación clara de lógica de presentación
+-   Componentes reutilizables (UF Value)
+-   Validación en tiempo real con JavaScript
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🧠 Controlador (Controller)
 
-## Laravel Sponsors
+-   Manejo de solicitudes HTTP
+-   Validación de entradas
+-   Coordinación entre Modelos y Vistas
+-   Respuestas diferenciadas (web/API)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Características Principales
 
-### Premium Partners
+-   **Autenticación Híbrida**: JWT para API, sesiones para web
+-   **CRUD de Proyectos**: Gestión completa con autorización
+-   **Dashboard Ejecutivo**: Estadísticas y proyectos recientes
+-   **API REST**: Endpoints protegidos con JWT
+-   **Componentes Externos**: Integración con API Banco Central
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Tecnologías
 
-## Contributing
+-   **Backend**: Laravel 12.x, PHP 8.2+
+-   **Base de Datos**: MySQL
+-   **Autenticación**: JWT (tymon/jwt-auth)
+-   **Frontend**: Bootstrap 5, JavaScript, Blade Templates
+-   **Build Tools**: Vite
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Instalación
 
-## Code of Conduct
+```bash
+# Clonar e instalar
+git clone https://github.com/bastianCeronDuque/techsolutions.git
+cd techsolutions
+composer install
+npm install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Configurar
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:secret
 
-## Security Vulnerabilities
+# Base de datos
+php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Compilar y ejecutar
+npm run build
+php artisan serve
+```
 
-## License
+## Estructura MVC
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+app/
+├── Models/                    # MODELO
+│   ├── User.php
+│   └── Project.php
+│
+├── Http/Controllers/          # CONTROLADOR
+│   ├── AuthController.php
+│   ├── ProjectController.php
+│   └── DashboardController.php
+│
+├── Http/Middleware/
+│   └── JwtMiddleware.php
+│
+└── Services/
+    └── BancoCentralApiService.php
+
+resources/
+└── views/                     # VISTA
+    ├── layouts/app.blade.php
+    ├── dashboard.blade.php
+    ├── login.blade.php
+    ├── register.blade.php
+    ├── components/            # Componentes reutilizables
+    │   └── uf-value.blade.php
+    └── projects/              # CRUD views
+        ├── index.blade.php
+        ├── create.blade.php
+        ├── edit.blade.php
+        └── show.blade.php
+```
+
+## Flujo MVC en TechSolutions
+
+1. **Request**: Usuario envía una solicitud (ej. crear proyecto)
+2. **Router**: La ruta dirige la solicitud al controlador adecuado
+3. **Controller**: Valida datos, interactúa con modelos y determina respuesta
+4. **Model**: Aplica reglas de negocio y actualiza la base de datos
+5. **Response**: Controlador devuelve vista (web) o JSON (API)
+
+## API Endpoints
+
+```http
+# Autenticación
+POST /api/register     # Registro de usuario
+POST /api/login        # Inicio de sesión (devuelve JWT)
+GET  /api/me           # Perfil del usuario (requiere auth)
+POST /api/logout       # Cerrar sesión
+
+# Gestión de Proyectos (CRUD)
+GET    /api/projects       # Listar proyectos del usuario
+POST   /api/projects       # Crear nuevo proyecto
+GET    /api/projects/{id}  # Ver proyecto específico
+PUT    /api/projects/{id}  # Actualizar proyecto
+DELETE /api/projects/{id}  # Eliminar proyecto
+```
+
+## Ventajas del Patrón MVC
+
+-   **Separación de Responsabilidades**: Código organizado y mantenible
+-   **Testabilidad**: Capas independientes facilitan pruebas unitarias
+-   **Reutilización**: Componentes independientes y reutilizables
+-   **Escalabilidad**: Fácil expansión de funcionalidades
+-   **Mantenibilidad**: Cambios localizados sin afectar otras partes
+
+# Clonar e instalar
+
+git clone https://github.com/bastianCeronDuque/techsolutions.git
+cd techsolutions
+composer install
+npm install
+
+# Configurar
+
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:secret
+
+# Base de datos
+
+php artisan migrate
+
+# Compilar y ejecutar
+
+npm run build
+php artisan serve
+
+````
+
+## Uso
+
+1. **Register**: Ve a `/register` y crea una cuenta
+2. **Login**: Accede en `/login` con tus credenciales
+3. **Dashboard**: Accede automáticamente tras login exitoso
+4. **CRUD**: Gestiona ventas desde interfaz
+
+## API Endpoints
+
+```http
+# Autenticación
+POST /api/register     # Registro de usuario
+POST /api/login        # Inicio de sesión
+GET  /api/me           # Perfil del usuario (requiere auth)
+POST /api/logout       # Cerrar sesión
+
+# Gestión de Ventas (CRUD)
+GET    /api/ventas         # Listar ventas
+POST   /api/ventas         # Crear nueva venta
+GET    /api/ventas/{id}    # Ver venta específica
+PUT    /api/ventas/{id}    # Actualizar venta
+DELETE /api/ventas/{id}    # Eliminar venta
+````
+
+## Estructura
+
+```
+app/
+├── Models/                    # MODELO
+│   ├── User.php
+│   └── Venta.php
+│
+├── Http/Controllers/          # CONTROLADOR
+│   ├── AuthController.php
+│   ├── VentaController.php
+│   └── DashboardController.php
+│
+├── Http/Middleware/
+│   └── JwtMiddleware.php
+resources/
+└── views/                     # VISTA
+    ├── layouts/app.blade.php
+    ├── dashboard.blade.php
+    ├── login.blade.php
+    ├── register.blade.php
+    ├── components/            # Componentes reutilizables
+    └── ventas/                # CRUD views
+        ├── index.blade.php
+        ├── create.blade.php
+        ├── edit.blade.php
+        └── show.blade.php
+public/
+├── assets/
+│   ├── vendor/       # jQuery, Bootstrap, Tabler Icons, plugins
+│   └── json/
+│       ├── search-vertical.json
+│       └── locales/
+│           └── en.json
+routes/
+├── web.php
+└── api.php
+
+```
+
+## Seguridad
+
+-   Cookies HttpOnly (protección XSS)
+-   Contraseñas hasheadas con bcrypt
+-   Validación robusta de datos
+-   Protección CSRF
+-   Tokens con múltiples fuentes
+
+## Autores
+
+**Bastián Cerón Duque**  
+GitHub: [@bastianCeronDuque](https://github.com/bastianCeronDuque)
+
+**Felipe Morales Roa**  
+GitHub: [@felipeDev303](https://github.com/felipeDev303)
