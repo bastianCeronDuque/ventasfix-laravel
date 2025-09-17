@@ -139,8 +139,8 @@ DELETE /api/projects/{id}  # Eliminar proyecto
 
 # Clonar e instalar
 
-git clone https://github.com/bastianCeronDuque/techsolutions.git
-cd techsolutions
+git clone https://github.com/bastianCeronDuque/ventasfix-laravel.git
+cd ventasfix
 composer install
 npm install
 
