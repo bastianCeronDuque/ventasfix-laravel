@@ -27,6 +27,12 @@
         <div>Productos</div>
       </a>
     </li>
+    <li class="menu-item">
+      <a href="{{ route('clients.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons ti ti-address-book"></i>
+        <div>Clientes</div>
+      </a>
+    </li>
 
   </ul>
 </aside>
